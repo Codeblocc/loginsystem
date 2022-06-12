@@ -1,3 +1,24 @@
+<?php
+$showAlert = true;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    include 'partials/_dbconnect.php';
+    $username = $POST["username"];
+    $password = $POST["password"];
+    $cpassword = $POST["cpassword"];
+    $exists = false;
+    if(($password == $cpassword) && $exists == false){
+        $sql = "INSERT INTO `users` (`sno`, `username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
+        $result = mysqli_query($conn, $sql);
+        if ($result){
+            $showAlert = false;
+        }
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +33,33 @@
 require 'partials/_nav.php';
 ?>
 
-<div class="container">
+
+<?php
+    if($login){
+    echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> You are logged in
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> ';
+    }
+    if($showError){
+    echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> '. $showError.'
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> ';
+    }
+    ?>
+
+
+<div class="container my-4">
     <h1 class='text-center'>Sign up to the website</h1>
     <form action="/loginsystem/signup.php" method ="post">
   <div class="form-group col-md-6">
     <label for="username">Username</label>
-    <input type="email" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter unique username">
+    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter unique username">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group col-md-6">
