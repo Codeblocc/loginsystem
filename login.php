@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+
+<?php
+require 'partials/_nav.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
