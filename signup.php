@@ -14,25 +14,22 @@ require 'partials/_nav.php';
 
 <div class="container">
     <h1 class='text-center'>Sign up to the website</h1>
-    <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter unique username">
+    <form action="/loginsystem/signup.php" method ="post">
+  <div class="form-group col-md-6">
+    <label for="username">Username</label>
+    <input type="email" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter unique username">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  <div class="form-group col-md-6">
+    <label for="Password">Password</label>
+    <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  <div class="form-group col-md-6">
+    <label for="cPassword">Confirm Password</label>
+    <input type="password" class="form-control" id="cPassword" name="cPassword" placeholder="Confirm Password">
+    <small id="emailHelp" class="form-text text-muted">Should match with the password that was entered above.</small>
   </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign up</button>
+  <button type="submit" class="btn btn-primary col-md-6">Sign up</button>
 </form>
 </div>
 
