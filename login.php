@@ -13,6 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $num = mysqli_num_rows($result);
     if ($num == 1) {
         $login = true;
+        session_start();
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        header("location: welcome.php");
+    } else {
+        $showError = "Invalid credentials, please try again";
     }
 }
 ?>
